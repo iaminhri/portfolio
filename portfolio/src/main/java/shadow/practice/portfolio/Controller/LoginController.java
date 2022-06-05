@@ -1,4 +1,4 @@
-package shadow.practice.school.Controller;
+package shadow.practice.portfolio.Controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

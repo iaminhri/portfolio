@@ -1,7 +1,6 @@
-package shadow.practice.school.Model;
+package shadow.practice.portfolio.Model;
 
 import lombok.Data;
-import org.springframework.asm.Type;
 
 /**
  * @Data annotation generates getters, setters, toString,

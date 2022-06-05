@@ -2,16 +2,12 @@
  * Business Logic Section
  */
 
-package shadow.practice.school.Service;
+package shadow.practice.portfolio.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.context.annotation.ApplicationScope;
-import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
-import shadow.practice.school.Model.Contact;
+import shadow.practice.portfolio.Model.Contact;
 
 /**
  * @Service creates a bean context of Service

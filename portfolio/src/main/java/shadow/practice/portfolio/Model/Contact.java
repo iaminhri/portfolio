@@ -1,4 +1,4 @@
-package shadow.practice.school.Model;
+package shadow.practice.portfolio.Model;
 
 import lombok.Data;
 

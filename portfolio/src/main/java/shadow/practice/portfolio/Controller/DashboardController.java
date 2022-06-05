@@ -1,4 +1,4 @@
-package shadow.practice.school.Controller;
+package shadow.practice.portfolio.Controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

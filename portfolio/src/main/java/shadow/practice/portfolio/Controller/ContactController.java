@@ -1,16 +1,13 @@
-package shadow.practice.school.Controller;
+package shadow.practice.portfolio.Controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import shadow.practice.school.Model.Contact;
-import shadow.practice.school.Service.ContactService;
+import shadow.practice.portfolio.Model.Contact;
+import shadow.practice.portfolio.Service.ContactService;
 
 import javax.validation.Valid;
 
