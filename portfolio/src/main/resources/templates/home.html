@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Portfolio</title>
+
+    <!-- css files -->
+    <link rel="stylesheet" href="assets/css/bootstrap.css"> <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css"> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+
+    <!--web font--><link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <!--//web font-->
+
+</head>
+
+<body>
+
+<div th:replace="header::header"></div>
+
+<!-- banner -->
+<section class="banner">
+    <div class="banner-layer">
+        <div class="container">
+            <div class="row w3pvt_banner_info">
+                <div class="col-md-8 w3layouts_banner_margin">
+                    <h3 class="editContent">My name is </h3>
+                    <h2 class="editContent">Hridoy Rahman</h2>
+                    <h4>Java Programmer, Game Developer and 3D Modeller</h4>
+                    <p>Digital world is a world of 0's & 1's, which fascinates me. It is interesting that how much a person can accomplish within this world. I have been self educating myself since 2014, in various different computer fields. I used to do problem solving then embedded system with robotics, worked on web development a few months, learning Linux system, bit of networking (CCNA) and Game development. Lastly, I came to finish my undergrad at Brock University. Now I am focusing on being an excellent programmer and developer. And I believe, no learning is wasted. :D
+                        Au-revoir. </p>
+                    <a href="#popup1"> Read More </a>
+                    <a href="#contact"> Contact Me </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner -->
+
+<!-- experience -->
+<section class="experience py-5" id="experience">
+    <div class="container py-3">
+        <h3 class="heading">Experience</h3>
+        <div class="row exp-grids">
+            <div class="col-lg-4 col-md-6">
+                <img src="assets/images/exp1.jpg" alt=" " class="img-fluid" />
+                <div class="exp wthree">
+                    <h4>Web Designer <span>2007 - 2010</span></h4>
+                    <div class="clearfix"></div>
+                    <p>Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                <img src="assets/images/exp2.jpg" alt=" " class="img-fluid" />
+                <div class="exp wthree">
+                    <h4>App Developer <span>2007 - 2010</span></h4>
+                    <div class="clearfix"></div>
+                    <p>Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+                <img src="assets/images/exp3.jpg" alt=" " class="img-fluid" />
+                <div class="exp wthree">
+                    <h4>Web Developer <span>2007 - 2010</span></h4>
+                    <div class="clearfix"></div>
+                    <p>Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //experience -->
+
+<!-- blog -->
+<section class="blog py-5" id="blog">
+    <div class="container py-3">
+        <h3 class="heading">Blog</h3>
+        <div class="row blog-grids">
+            <div class="col-lg-7">
+                <h4 class="left-grid-blog">I write beautiful things</h4>
+                <p class="left-grid-blog">Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 w3ls">
+                <div class="blog-grid1">
+                    <h5>25th June</h5>
+                    <h4>Website Design</h4>
+                    <p>Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc.....</p>
+                    <a href="#">Read More </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 w3ls mt-md-0 mt-3">
+                <div class="blog-grid1">
+                    <h5>25th June</h5>
+                    <h4>Mobile Apps </h4>
+                    <p>Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc.....</p>
+                    <a href="#">Read More </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-lg-0 mt-3 w3ls">
+                <div class="blog-grid1">
+                    <h5>25th June</h5>
+                    <h4>Web Development </h4>
+                    <p>Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc.....</p>
+                    <a href="#">Read More </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //blog -->
+
+<!-- gallery -->
+<div class="gallery py-5" id="projects">
+    <div class="container py-3">
+        <h3 class="heading">Projects</h3>
+        <div class="row gallery_grid-more project-grids w3ls">
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1">
+                <a href="#popup2">
+                    <img src="assets/images/exp1.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1">
+                <a href="#popup3">
+                    <img src="assets/images/exp2.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1 mt-md-0 mt-4">
+                <a href="#popup4">
+                    <img src="assets/images/exp3.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1 mt-lg-0 mt-4">
+                <a href="#popup5">
+                    <img src="assets/images/exp1.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1 mt-4">
+                <a href="#popup6">
+                    <img src="assets/images/exp2.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1 mt-4">
+                <a href="#popup7">
+                    <img src="assets/images/exp3.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1 mt-4">
+                <a href="#popup8">
+                    <img src="assets/images/exp1.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6 w3layoutsits_w3layouts_gallery_grid1 mt-4">
+                <a href="#popup9">
+                    <img src="assets/images/exp2.jpg" alt=" " class="img-fluid" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //gallery -->
+
+<!-- text -->
+<div class="text py-lg-5 py-5 text-center" id="text">
+    <div class="container py-sm-3">
+        <h5 class="w3pvt-title text-white">Ulvinar neque pharetra ac int. placerat</h5>
+        <p>Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <div class="d-flex justify-content-center mt-3">
+            <a href="#" class="text-capitalize mr-2 work btn">My work </a>
+            <a href="#" class="text-capitalize hire btn">Hire Me </a>
+        </div>
+    </div>
+</div>
+<!-- //text -->
+
+<div th:replace="footer::footer"></div>
+
+<!-- popup for btn -->
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <img src="assets/images/banner1.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4 editContent">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
+<!-- //popup for btn -->
+
+<!-- popup for gallery -->
+<div id="popup2" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp1.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup3" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp2.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup4" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp3.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup5" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp1.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup6" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp2.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup7" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp3.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup8" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp1.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<div id="popup9" class="overlay">
+    <div class="popup">
+        <img src="assets/images/exp2.jpg" alt="Popup Image" class="img-fluid" />
+        <p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor. Vestibulum at dui nunc. Nulla viverra pharetra sem, eget pulvinar neque pharetra ac int. lorem ipsum Vestibulum. placerat placerat dolor. Vestibulum at dui nunc. Nullam eu elit neque lectus.</p>
+        <a class="close" href="#projects">&times;</a>
+    </div>
+</div>
+<!-- //popup for gallery -->
+
+</body>
+</html>
