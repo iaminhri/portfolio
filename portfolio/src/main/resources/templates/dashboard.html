@@ -9,8 +9,6 @@
     <title>Hridoy Rahman's Portfolio</title>
     <!-- Google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!--    &lt;!&ndash; Google fonts &ndash;&gt;-->
-    <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Template CSS Style link -->
     <link rel="stylesheet" href="/assets/css/style-starter.css">
     <!-- css files -->
@@ -39,7 +37,7 @@
 </section>
 <!-- //inner banner -->
 
-<!-- login block -->
+<!-- Welcome Block -->
 <section class="dashboard py-5" id="dashboard">
     <div class="container py-lg-5">
         <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
@@ -49,13 +47,42 @@
     </div>
 </section>
 
-<section class="services py-5" id="services">
-    <div class="container py-5">
-        <div class="py-2">
+<!--<section class="services py-5" id="services">-->
+<!--    <div class="container py-5">-->
+<!--        <div class="py-2">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!--&lt;!&ndash; //Welcome Block &ndash;&gt;-->
+
+<!-- //Message Block-->
+<div class="container py-md-5 py-4">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row m-t-25">
+                <div class="col-sm-6 col-lg-4" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a th:href="@{/displayMessages}">
+                        <div class="overview-item overview-item--c2">
+                            <div class="text-center">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="fas fa-envelope-open-text"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2 class="align-self-center">Messages</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-<!-- //login block -->
+</div>
+<!-- //Message Block-->
 
 <!-- footer block -->
 <div th:replace="footer :: footer">...</div>

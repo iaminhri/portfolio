@@ -8,7 +8,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
-public class Contact {
+public class Contact extends BaseEntity{
+    private int contactId;
+
     @NotBlank(message = "Name Required!!!")
     @Size(min=3, message = "Name must be greater than 3 characters !!!")
     private String name;
@@ -24,4 +26,6 @@ public class Contact {
     @NotBlank(message = "Message must not be blank !")
     @Size(min = 10, message = "Message must be at least 10 characters long !")
     private String message;
+
+    private String status;
 }

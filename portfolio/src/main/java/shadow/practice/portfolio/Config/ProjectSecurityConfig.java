@@ -40,7 +40,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("user").password("123456").roles("USER")
                 .and()
-                .withUser("admin").password("iamin").roles("USER", "ADMIN")
+                .withUser("admin").password("iamin").roles("ADMIN")
                 .and().passwordEncoder(NoOpPasswordEncoder.getInstance());
         //NoOpPasswordEncoder -> password encryption using Spring password encoder.
     }
