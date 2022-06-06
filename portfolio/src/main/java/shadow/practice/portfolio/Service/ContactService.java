@@ -14,6 +14,7 @@ import shadow.practice.portfolio.PortfolioWebApp;
 import shadow.practice.portfolio.Repository.ContactRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @Service creates a bean context of Service
@@ -54,6 +55,13 @@ public class ContactService {
             isSaved = true;
 
         return isSaved;
+    }
+
+    public List<Contact> findMsgsWithOpenStatus() {
+        // calling from Contact Repository.
+        List<Contact> contactMsgs = contactRepository.findMsgsWithStatus(PortfolioWebAppConstants.OPEN);
+        //Returning the queries from contact Repo.
+        return contactMsgs;
     }
 
 //    public int getCounter() {

@@ -6,10 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import shadow.practice.portfolio.Model.Contact;
 import shadow.practice.portfolio.Service.ContactService;
 
 import javax.validation.Valid;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -76,5 +79,18 @@ public class ContactController {
 //        log.info("Number of times the contact form is submitted: " + contactService.getCounter());
 
         return "redirect:/contact";
+    }
+
+    @RequestMapping(value="/displayMessages")
+    public ModelAndView displayMessagePage(Model model){
+        List<Contact> contactMsg = contactService.findMsgsWithOpenStatus();
+        /**
+         * @ModelAndView instance object with "messages.html -> shows the messages html page with
+         * the help of ModelAndView.
+         */
+        ModelAndView modelAndView = new ModelAndView("messages.html");
+
+        modelAndView.addObject("contactMsgs", contactMsg);
+        return modelAndView;
     }
 }
