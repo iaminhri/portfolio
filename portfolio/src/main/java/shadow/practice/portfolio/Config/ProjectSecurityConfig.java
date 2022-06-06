@@ -18,7 +18,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
         //.mvcMatchers(HttpMethod.POST, "/home").permitAll();
         // -> this configures the httpMethod for a http request.
         // http.authorizeRequests().csrf().disable() // disables the csrf security.
-        http.csrf().ignoringAntMatchers("/saveMsg").and()
+        http.csrf().ignoringAntMatchers("/saveMsg").ignoringAntMatchers("/h2-console/**").and()
                 .authorizeRequests()
                 .mvcMatchers("/dashboard").authenticated()
                 .mvcMatchers("/home").permitAll()
@@ -29,7 +29,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll().
+                and().authorizeRequests().antMatchers("/h2-console/**").permitAll().
                 and().httpBasic();
+
+        http.headers().frameOptions().disable();
     }
 
     @Override
