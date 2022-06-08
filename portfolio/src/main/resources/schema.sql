@@ -11,3 +11,14 @@ CREATE TABLE IF NOT EXISTS `contact_msg` (
     `updated_at` TIMESTAMP DEFAULT NULL,
     `updated_by` varchar(50) DEFAULT NULL
 );
+
+CREATE TABLE IF NOT EXISTS `services` (
+    `serviceName` varchar(100) NOT NULL,
+    `serviceDetails` varchar(500) NOT NULL,
+    `type` varchar(50) NOT NULL,
+    --timestamp and admin information
+    `created_at` TIMESTAMP NOT NULL,
+    `created_by` varchar(50) NOT NULL,
+    `updated_at` TIMESTAMP DEFAULT NULL,
+    `updated_by` varchar(50) DEFAULT NULL
+);

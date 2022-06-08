@@ -1,5 +1,6 @@
 package shadow.practice.portfolio.Model;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.Data;
 
 /**
@@ -7,10 +8,11 @@ import lombok.Data;
  * equalsAndHashTable, RequiredArgsConstructor and AllArgsConstructor
  */
 @Data
-public class Services {
-    private final String serviceName;
-    private final String serviceDetails;
-    private final Type type;
+public class Services extends BaseEntity{
+
+    private String serviceName;
+    private String serviceDetails;
+    private Type type;
 
     public enum Type{
         GAMEDEV, WEBDEV

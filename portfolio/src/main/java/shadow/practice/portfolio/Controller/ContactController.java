@@ -2,6 +2,7 @@ package shadow.practice.portfolio.Controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,6 +15,7 @@ import javax.validation.Valid;
 
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
@@ -92,5 +94,12 @@ public class ContactController {
 
         modelAndView.addObject("contactMsgs", contactMsg);
         return modelAndView;
+    }
+
+    @RequestMapping(value="/closeMsg", method=GET)
+    public String displayCloseMsg(@RequestParam int id,
+                                        Authentication authentication) {
+        contactService.updateMsgStatus(id, authentication.getName());
+        return "redirect:/displayMessages";
     }
 }
