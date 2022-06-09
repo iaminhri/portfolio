@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <!-- //header -->
+    <header id="site-header">
+        <div class="container">
+            <!-- nav -->
+            <nav class="py">
+                <div id="logo">
+                    <h1 > <a th:href="@{/home}" class = "text-dark"><span class="fa fa-rebel" aria-hidden="true"></span> Portfolio</a></h1>
+                </div>
+
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop" />
+                <ul class="menu mt-2 bg-dark">
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}" th:href="@{/home}" class = "navbar" >Home</a></li>
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/about' ? 'active':''}" th:href="@{/about}" class = "navbar">About</a></li>
+<!--                    <li class="mr-lg-4 mr-3 active"><a th:href="@{/services(gamedev='true',webdev='true')}">Services</a></li>-->
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/services' ? 'active':''}" th:href="@{/services/all}" class = "navbar">Services</a></li>
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:href="@{/experience}" class = "navbar">Experience</a></li>
+<!--                    <li class="mr-lg-4 mr-3">-->
+<!--                        &lt;!&ndash; First Tier Drop Down &ndash;&gt;-->
+<!--                        <label for="drop-2" class="toggle text-dark">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>-->
+<!--                        <a th:classappend="${#httpServletRequest.getRequestURI() == '/contact' ? 'active':''}"-->
+<!--                           class = "navbar" href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>-->
+<!--                        <input type="checkbox" id="drop-2"/>-->
+<!--                        <ul>-->
+<!--                            <li><a href="#blog">Blog</a></li>-->
+<!--                            <li><a href="#projects">Projects</a></li>-->
+<!--                            <li><a href="#text">Quoted Text</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/contact' ? 'active' : ''}" th:href="@{/contact}" class = "navbar">Contact</a></li>
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/login' ? 'active' : ''}" th:href="@{/login}" class = "navbar">Login</a></li>
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAuthenticated()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/dashboard' ? 'active' : ''}" th:href="@{/dashboard}" class = "navbar">Dashboard</a></li>
+                    <li class="mr-lg-4 mr-3" sec:authorize="isAuthenticated()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/services' ? 'active' : ''}" th:href="@{/logout}" class = "navbar">Logout</a></li>
+                </ul>
+            </nav>
+            <!-- //nav -->
+        </div>
+    </header>
+    <!-- //header -->
+</body>
+</html>
