@@ -1,4 +1,7 @@
-application.properties
+src\main\resources\application.properties
+src\main\resources\data.sql
+src\main\resources\schema.sql
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
