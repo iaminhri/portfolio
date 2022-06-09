@@ -18,7 +18,7 @@ public class ServicesRepository {
     }
 
     public List<Services> findAllServices(){
-        String sql = "SELECT * FROM SERVICES";
+        String sql = "select * from services";
         var rowMapper = BeanPropertyRowMapper.newInstance(Services.class);
 
         return jdbcTemplate.query(sql, rowMapper);

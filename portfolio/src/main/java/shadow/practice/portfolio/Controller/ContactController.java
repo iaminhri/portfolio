@@ -75,8 +75,6 @@ public class ContactController {
         }
         contactService.saveMessageDetails(contact);
 
-
-
 //        contactService.setCounter(contactService.getCounter()+1);
 //        log.info("Number of times the contact form is submitted: " + contactService.getCounter());
 
