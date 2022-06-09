@@ -15,6 +15,7 @@ import shadow.practice.portfolio.Repository.ContactRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @Service creates a bean context of Service
@@ -49,25 +50,50 @@ public class ContactService {
         contact.setCreatedBy(PortfolioWebAppConstants.ANONYMOUS);
         contact.setCreatedAt(LocalDateTime.now());
 
-        int result = contactRepository.saveContactMsg(contact);
+//        int result = contactRepository.saveContactMsg(contact);
+        Contact savedContact = contactRepository.save(contact);
 
-        if(result > 0)
+        if(savedContact != null && savedContact.getContactId() > 0)
             isSaved = true;
+
+//        if(result > 0)
+//            isSaved = true;
 
         return isSaved;
     }
 
     public List<Contact> findMsgsWithOpenStatus() {
         // calling from Contact Repository.
-        List<Contact> contactMsgs = contactRepository.findMsgsWithStatus(PortfolioWebAppConstants.OPEN);
+//        List<Contact> contactMsgs = contactRepository.findMsgsWithStatus(PortfolioWebAppConstants.OPEN);
+        /**
+         * @findByStatus -> Abstract method from Contact Repo, which is implemented at runtime by Spring Data JPA.
+         * Additionally, property status is mentioned within model class which connects to the database using SDJPA.
+         * Such that it knows which data to fetch from the table.
+         * @return a list<Contact>.
+         * @contactMsgs holds a reference of the status List of each msg inside DB.
+         */
+        List<Contact> contactMsgs = contactRepository.findByStatus(PortfolioWebAppConstants.OPEN);
+
         //Returning the queries from contact Repo.
         return contactMsgs;
     }
 
     public boolean updateMsgStatus(int contactId, String updatedBy) {
         boolean isUpdated = false;
-        int result = contactRepository.updateMsgStatus(contactId, PortfolioWebAppConstants.CLOSE, updatedBy);
-        if(result > 0)
+//        int result = contactRepository.updateMsgStatus(contactId, PortfolioWebAppConstants.CLOSE, updatedBy);
+//        if(result > 0)
+//            isUpdated = true;
+
+        Optional<Contact> contact = contactRepository.findById(contactId);
+        contact.ifPresent(contact1 -> {
+            contact1.setStatus(PortfolioWebAppConstants.CLOSE);
+            contact1.setUpdatedAt(LocalDateTime.now());
+            contact1.setUpdatedBy(updatedBy);
+        });
+
+        Contact updatedContact = contactRepository.save(contact.get());
+
+        if(updatedContact != null && updatedContact.getUpdatedBy() != null)
             isUpdated = true;
         return isUpdated;
     }

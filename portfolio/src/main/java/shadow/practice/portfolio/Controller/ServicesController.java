@@ -9,8 +9,10 @@ import shadow.practice.portfolio.Model.Services;
 import shadow.practice.portfolio.Repository.ServicesRepository;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 public class ServicesController {
@@ -53,13 +55,18 @@ public class ServicesController {
 //                new Services("Photographer", "Wildlife Photography", Services.Type.GAMEDEV)
 //        );
 
-        List<Services> services = servicesRepository.findAllServices();
+//        List<Services> services = servicesRepository.findAllServices();
+        // findAll() -> Is Called from CRUD Repository interface
+        Iterable<Services> services = servicesRepository.findAll();
+
+        // Iterable Converted Into A List.
+        List<Services> servicesList = StreamSupport.stream(services.spliterator(), false).collect(Collectors.toList());
 
         Services.Type[] types = Services.Type.values();
 
         for(Services.Type type : types){
             model.addAttribute(type.toString(),
-                    services.stream().filter(Services -> Services.getType().equals(type)).collect(Collectors.toList())
+                    servicesList.stream().filter(Services -> Services.getType().equals(type)).collect(Collectors.toList())
                     );
         }
         return "services.html";
