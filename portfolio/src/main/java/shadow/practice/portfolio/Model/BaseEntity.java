@@ -1,7 +1,14 @@
 package shadow.practice.portfolio.Model;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
@@ -10,9 +17,20 @@ import java.time.LocalDateTime;
  */
 @Data //Lombok Library.
 @MappedSuperclass // whenever this class is extended, spring data JPA includes these properties within the DB table.
+@EntityListeners(AuditingEntityListener.class) //Constantly Listening, whether BaseEntity information has been updated
+// or created within SpringJPA.
 public class BaseEntity {
+    @CreatedDate
+    @Column(updatable = false)
     private LocalDateTime createdAt;
+    @CreatedBy
+    @Column(updatable = false)
     private String createdBy;
+
+    @LastModifiedDate
+    @Column(insertable = false)
     private LocalDateTime updatedAt;
+    @LastModifiedBy
+    @Column(insertable = false)
     private String updatedBy;
 }
