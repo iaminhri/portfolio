@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Repository;
 import shadow.practice.portfolio.Model.Contact;
-import shadow.practice.portfolio.RowMappers.ContactRowMapper;
+//import shadow.practice.portfolio.RowMappers.ContactRowMapper;
 import shadow.practice.portfolio.Service.ContactService;
 
 import java.sql.PreparedStatement;

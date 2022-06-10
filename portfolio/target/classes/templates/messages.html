@@ -60,7 +60,7 @@ Author URL: http://w3layouts.com
             <tbody>
             <tr th:each="msg: ${contactMsgs}">
                 <td th:text="${msg.name}"></td>
-                <td th:text="${msg.phoneNum}"></td>
+                <td th:text="${msg.mobileNum}"></td>
                 <td th:text="${msg.email}"></td>
                 <td th:text="${msg.message}"></td>
                 <td><a th:href="@{/closeMsg(id=${msg.contactId})}" class="btn btn-style btn-style-3">CLOSE</a></td>
