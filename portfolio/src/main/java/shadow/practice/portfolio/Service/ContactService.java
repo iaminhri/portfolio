@@ -46,9 +46,13 @@ public class ContactService {
 
     public boolean saveMessageDetails(Contact contact){
         boolean isSaved = false;
+        /**
+         * This responsibility is handed over to Spring Data JPA dependency
+         * Check @AuditAwareImpl, @BaseEntity and @PortfolioWebApp
+         * */
         contact.setStatus(PortfolioWebAppConstants.OPEN);
-        contact.setCreatedBy(PortfolioWebAppConstants.ANONYMOUS);
-        contact.setCreatedAt(LocalDateTime.now());
+//        contact.setCreatedBy(PortfolioWebAppConstants.ANONYMOUS);
+//        contact.setCreatedAt(LocalDateTime.now());
 
 //        int result = contactRepository.saveContactMsg(contact);
         Contact savedContact = contactRepository.save(contact);
@@ -78,7 +82,8 @@ public class ContactService {
         return contactMsgs;
     }
 
-    public boolean updateMsgStatus(int contactId, String updatedBy) {
+//    public boolean updateMsgStatus(int contactId, String updatedBy) {
+    public boolean updateMsgStatus(int contactId) {
         boolean isUpdated = false;
 //        int result = contactRepository.updateMsgStatus(contactId, PortfolioWebAppConstants.CLOSE, updatedBy);
 //        if(result > 0)
@@ -86,9 +91,12 @@ public class ContactService {
 
         Optional<Contact> contact = contactRepository.findById(contactId);
         contact.ifPresent(contact1 -> {
+            /**
+             * This responsibility is handed over to Spring Data JPA dependency Check @AuditAwareImpl, @BaseEntity and @PortfolioWebApp
+             * */
             contact1.setStatus(PortfolioWebAppConstants.CLOSE);
-            contact1.setUpdatedAt(LocalDateTime.now());
-            contact1.setUpdatedBy(updatedBy);
+//            contact1.setUpdatedAt(LocalDateTime.now());
+//            contact1.setUpdatedBy(updatedBy);
         });
 
         Contact updatedContact = contactRepository.save(contact.get());

@@ -94,10 +94,16 @@ public class ContactController {
         return modelAndView;
     }
 
+//    @RequestMapping(value="/closeMsg", method=GET)
+//    public String displayCloseMsg(@RequestParam int id,
+//                                        Authentication authentication) {
+//        contactService.updateMsgStatus(id, authentication.getName());
+//        return "redirect:/displayMessages";
+//    }
+
     @RequestMapping(value="/closeMsg", method=GET)
-    public String displayCloseMsg(@RequestParam int id,
-                                        Authentication authentication) {
-        contactService.updateMsgStatus(id, authentication.getName());
+    public String displayCloseMsg(@RequestParam int id) {
+        contactService.updateMsgStatus(id);
         return "redirect:/displayMessages";
     }
 }
