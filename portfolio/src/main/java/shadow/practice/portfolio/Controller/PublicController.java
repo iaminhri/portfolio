@@ -17,8 +17,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("public")
 public class PublicController {
-//    @Autowired
-//    PersonService personService;
+    @Autowired
+    PersonService personService;
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String displayRegisterPage(Model model){
@@ -34,6 +34,11 @@ public class PublicController {
     public String createUser(@Valid @ModelAttribute("person") Person person, Errors errors) {
         if(errors.hasErrors())
             return "register.html";
-        return "redirect:/login?register=true";
+        boolean isSaved = personService.createNewPerson(person);
+
+        if(isSaved)
+            return "redirect:/login?register=true";
+        else
+            return "register.html";
     }
 }

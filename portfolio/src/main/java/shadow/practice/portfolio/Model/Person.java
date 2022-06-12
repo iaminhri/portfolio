@@ -61,4 +61,19 @@ public class Person extends BaseEntity{
     @Size(min=5, message="Confirm Password must be at least 5 characters long")
     @Transient
     private String confirmPwd;
+
+    /**
+     * $FetchType.EAGER -> Automatic loading of followed data table
+     * $CascadeType.All -> loads all the Cascade type
+     *                  -> PERSIST, MERGE, REFRESH, REMOVE, DETACH AND ALL.
+     *
+     */
+    @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Address.class)
+    @JoinColumn( name = "address_id", referencedColumnName = "addressId", nullable = true)
+    private Address address;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
+    @JoinColumn( name = "role_id", referencedColumnName = "roleId", nullable = false)
+    private Roles roles;
+
 }
