@@ -23,10 +23,30 @@ public class FieldsValueMatchValidator
                 .getPropertyValue(field);
         Object fieldMatchValue = new BeanWrapperImpl(value)
                 .getPropertyValue(fieldMatch);
+
         if (fieldValue != null) {
-            return fieldValue.equals(fieldMatchValue);
+            if(fieldValue.toString().startsWith("$2a")){
+                return true;
+            }else {
+                return fieldValue.equals(fieldMatchValue);
+            }
         } else {
             return fieldMatchValue == null;
         }
+
+//        Hashed Password value Authorized
+//        if(fieldValue != null){
+//            if(fieldValue.toString().startsWith("$2a")) // User password after converting into hashed password, give it a pass.
+//                return true;
+//            else
+//                return fieldValue.equals(fieldMatchValue); // User Registration First password matching without hash code.
+//        }else
+//            return fieldMatchValue == null;
+
+//        if (fieldValue != null) {
+//            return fieldValue.equals(fieldMatchValue);
+//        } else {
+//            return fieldMatchValue == null;
+//        }
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import shadow.practice.portfolio.Model.Person;
 import shadow.practice.portfolio.Model.Roles;
@@ -23,6 +24,8 @@ public class PortfolioUserAuthProvider implements AuthenticationProvider {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -31,9 +34,11 @@ public class PortfolioUserAuthProvider implements AuthenticationProvider {
 
         Person person = personRepository.readByEmail(email);
 
-        if(person != null & person.getPersonId() > 0 && pwd.equals(person.getPwd())){
+        //@passwordEncoder.matches() -> matches the password between user end password and hashed password from DB.
+        if( person != null && person.getPersonId() > 0 &&
+                passwordEncoder.matches(pwd, person.getPwd()) ){
             return new UsernamePasswordAuthenticationToken(
-                    person.getName(), pwd, getGrantedAuthorities(person.getRoles())
+                    person.getName(), null, getGrantedAuthorities(person.getRoles())
             );
         }else
             throw new BadCredentialsException("Invalid Exception");
