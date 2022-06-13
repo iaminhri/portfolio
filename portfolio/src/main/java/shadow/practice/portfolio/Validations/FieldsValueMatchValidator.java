@@ -24,17 +24,8 @@ public class FieldsValueMatchValidator
         Object fieldMatchValue = new BeanWrapperImpl(value)
                 .getPropertyValue(fieldMatch);
 
-        if (fieldValue != null) {
-            if(fieldValue.toString().startsWith("$2a")){
-                return true;
-            }else {
-                return fieldValue.equals(fieldMatchValue);
-            }
-        } else {
-            return fieldMatchValue == null;
-        }
 
-//        Hashed Password value Authorized
+//        Hashed Password value Authorized when Spring DATA JPA Validation is enabled
 //        if(fieldValue != null){
 //            if(fieldValue.toString().startsWith("$2a")) // User password after converting into hashed password, give it a pass.
 //                return true;
@@ -43,10 +34,10 @@ public class FieldsValueMatchValidator
 //        }else
 //            return fieldMatchValue == null;
 
-//        if (fieldValue != null) {
-//            return fieldValue.equals(fieldMatchValue);
-//        } else {
-//            return fieldMatchValue == null;
-//        }
+        if (fieldValue != null) {
+            return fieldValue.equals(fieldMatchValue);
+        } else {
+            return fieldMatchValue == null;
+        }
     }
 }

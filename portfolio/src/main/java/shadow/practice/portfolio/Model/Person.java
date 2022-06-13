@@ -28,7 +28,9 @@ import javax.validation.constraints.Size;
                 message = "Email addresses do not match!"
         )
 })
-
+/**
+ * Javax.Validation.Constraints used within these input fields.
+ */
 public class Person extends BaseEntity{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
