@@ -7,5 +7,10 @@ import shadow.practice.portfolio.Model.Person;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer> {
-
+    /**
+     * runs a select query on the database with the table name email
+     * @param email table from the database.
+     * @return person object
+     */
+    Person readByEmail(String email);
 }
