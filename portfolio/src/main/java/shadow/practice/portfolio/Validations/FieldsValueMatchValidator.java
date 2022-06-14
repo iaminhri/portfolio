@@ -24,7 +24,6 @@ public class FieldsValueMatchValidator
         Object fieldMatchValue = new BeanWrapperImpl(value)
                 .getPropertyValue(fieldMatch);
 
-
 //        Hashed Password value Authorized when Spring DATA JPA Validation is enabled
 //        if(fieldValue != null){
 //            if(fieldValue.toString().startsWith("$2a")) // User password after converting into hashed password, give it a pass.
