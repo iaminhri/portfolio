@@ -19,10 +19,10 @@
                 <label for="drop" class="toggle">Menu</label>
                 <input type="checkbox" id="drop" />
                 <ul class="menu mt-2 bg-dark">
-                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}" th:href="@{/home}" class = "navbar" >Home</a></li>
+                    <li class="mr-lg-4 mr-3" ><a th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}" th:href="@{/home}" class = "navbar" >Home</a></li>
                     <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/about' ? 'active':''}" th:href="@{/about}" class = "navbar">About</a></li>
 <!--                    <li class="mr-lg-4 mr-3 active"><a th:href="@{/services(gamedev='true',webdev='true')}">Services</a></li>-->
-                    <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:classappend="${#httpServletRequest.getRequestURI() == '/services' ? 'active':''}" th:href="@{/services/all}" class = "navbar">Services</a></li>
+                    <li class="mr-lg-4 mr-3" ><a th:classappend="${#httpServletRequest.getRequestURI() == '/services' ? 'active':''}" th:href="@{/services/all}" class = "navbar">Services</a></li>
                     <li class="mr-lg-4 mr-3" sec:authorize="isAnonymous()"><a th:href="@{/experience}" class = "navbar">Experience</a></li>
 <!--                    <li class="mr-lg-4 mr-3">-->
 <!--                        &lt;!&ndash; First Tier Drop Down &ndash;&gt;-->
