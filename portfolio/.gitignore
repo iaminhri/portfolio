@@ -2,3 +2,4 @@ application.properties
 *.sql
 *.css
 *.js
+*.html
