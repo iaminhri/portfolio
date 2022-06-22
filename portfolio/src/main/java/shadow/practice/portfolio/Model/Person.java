@@ -68,7 +68,6 @@ public class Person extends BaseEntity{
      * $FetchType.EAGER -> Automatic loading of followed data table
      * $CascadeType.All -> loads all the Cascade type
      *                  -> PERSIST, MERGE, REFRESH, REMOVE, DETACH AND ALL.
-     *
      */
     @OneToOne( fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Address.class)
     @JoinColumn( name = "address_id", referencedColumnName = "addressId", nullable = true)
@@ -78,4 +77,12 @@ public class Person extends BaseEntity{
     @JoinColumn( name = "role_id", referencedColumnName = "roleId", nullable = false)
     private Roles roles;
 
+    /**
+     * @JoinColumn -> @name -> name of database column of the Child Class
+     *             -> @referencedColumnName -> name of the column in the Parent class
+     * @nullable   -> true.
+     */
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "class_id", referencedColumnName = "classId", nullable = true)
+    private PortfolioClass portfolioClass;
 }
