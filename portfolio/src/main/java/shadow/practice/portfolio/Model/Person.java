@@ -2,6 +2,8 @@ package shadow.practice.portfolio.Model;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.jdbc.object.UpdatableSqlQuery;
@@ -14,7 +16,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Data
+//@Data
+@Getter
+@Setter
 @Entity
 @FieldsValueMatch.List({
         @FieldsValueMatch(
@@ -78,8 +82,8 @@ public class Person extends BaseEntity{
     private Roles roles;
 
     /**
-     * @JoinColumn -> @name -> name of database column of the Child Class
-     *             -> @referencedColumnName -> name of the column in the Parent class
+     * @JoinColumn -> @name -> Column name of the Child Class from Class Table
+     *             -> @referencedColumnName -> name of the column in Parent class of Portfolio Class.
      * @nullable   -> true.
      */
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
