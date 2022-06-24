@@ -15,6 +15,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 //@Data
 @Getter
@@ -89,4 +91,24 @@ public class Person extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "class_id", referencedColumnName = "classId", nullable = true)
     private PortfolioClass portfolioClass;
+
+    /**
+     * In @ManyToMany Relationship, to create an intermediate table use JoinTable;
+     * @JoinTable -> requires configuration of multiple column from different Tables and creates a new intermediary table.
+     * $person_courses -> Intermediary Table name;
+     * @joinColumns -> configures the column within this class.
+     * @inverseJoinColumns -> configures the column within courses class.
+     */
+
+    @ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "person_courses",
+        joinColumns = { //details within the mentioned class.
+            @JoinColumn(name = "person_id", referencedColumnName = "personId")
+        },
+        inverseJoinColumns = { //Details about the other joined table.
+            @JoinColumn(name = "course_id", referencedColumnName = "courseId")
+        }
+    )
+    private Set<Courses> courses = new HashSet<>();
+
 }
