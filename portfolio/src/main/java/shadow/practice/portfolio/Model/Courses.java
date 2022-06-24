@@ -16,7 +16,7 @@ public class Courses extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int course_id;
+    private int courseId;
 
     private String name;
 

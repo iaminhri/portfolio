@@ -100,12 +100,14 @@ public class Person extends BaseEntity{
      * @inverseJoinColumns -> configures the column within courses class.
      */
 
-    @ManyToMany(mappedBy = "persons", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    //details within the mentioned class.
+    //Details about the other joined table.
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "person_courses",
-        joinColumns = { //details within the mentioned class.
+        joinColumns = {
             @JoinColumn(name = "person_id", referencedColumnName = "personId")
         },
-        inverseJoinColumns = { //Details about the other joined table.
+        inverseJoinColumns = {
             @JoinColumn(name = "course_id", referencedColumnName = "courseId")
         }
     )

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import shadow.practice.portfolio.Model.Courses;
 import shadow.practice.portfolio.Model.Person;
 import shadow.practice.portfolio.Model.PortfolioClass;
+import shadow.practice.portfolio.Repository.CoursesRepository;
 import shadow.practice.portfolio.Repository.PersonRepository;
 import shadow.practice.portfolio.Repository.PortfolioClassRepository;
 
@@ -27,6 +29,9 @@ public class AdminController {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    CoursesRepository coursesRepository;
 
     @RequestMapping("/displayClasses")
     public ModelAndView displayClassPage(Model model){
@@ -91,6 +96,13 @@ public class AdminController {
         return modelAndView;
     }
 
+    /**
+     * GetMapping -> is used for viewing only, only to retrieve data from the backend.
+     * @param model -> Model class parameter.
+     * @param personId -> requested param from front-end
+     * @param session -> existing session passed to modify data from the session.
+     * @return modelAndView data modified within function.
+     */
     @GetMapping("/deleteStudent")
     public ModelAndView deleteStudentOperation(Model model, @RequestParam int personId, HttpSession session){
         PortfolioClass portfolioClass = (PortfolioClass) session.getAttribute("portfolioClass");
@@ -100,6 +112,20 @@ public class AdminController {
         PortfolioClass portfolioClassSaved =  portfolioClassRepository.save(portfolioClass);
         session.setAttribute("portfolioClass", portfolioClassSaved);
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId=" + portfolioClass.getClassId());
+        return modelAndView;
+    }
+
+    @GetMapping("/displayCourses")
+    public ModelAndView displayCoursesPage(Model model){
+        List<Courses> courses = coursesRepository.findAll();
+        ModelAndView modelAndView = new ModelAndView("courses_secure.html");
+        //fetch data from DB with the name courses and exploited this data in the front-end.
+        modelAndView.addObject("courses", courses);
+        /**
+         * model.addAttribute -> sending a new object of the Courses class.
+         * Fetches the data from the Front-end to the back-end.
+         */
+        model.addAttribute("course", new Courses());
         return modelAndView;
     }
 }
