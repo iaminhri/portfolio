@@ -20,7 +20,7 @@ public class Courses extends BaseEntity{
 
     private String name;
 
-    private int fees;
+    private String fees;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<Person> persons = new HashSet<>();

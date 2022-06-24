@@ -128,4 +128,82 @@ public class AdminController {
         model.addAttribute("course", new Courses());
         return modelAndView;
     }
+
+    @PostMapping("/addNewCourse")
+    public ModelAndView addNewCourses(Model model, @ModelAttribute("course") Courses courses){
+        ModelAndView modelAndView= new ModelAndView();
+        //saved the courses details fetched using @ModelAttribute("course") from front-end / user input.
+        coursesRepository.save(courses);
+        modelAndView.setViewName("redirect:/admin/displayCourses");
+        return modelAndView;
+    }
+
+    @GetMapping("/viewStudents")
+    public ModelAndView viewStudentsPage(Model model, @RequestParam int id,
+                                         @RequestParam(value = "error", required = false) String error,
+                                                     HttpSession session){
+        String errorMessage = null;
+        ModelAndView modelAndView = new ModelAndView("course_students.html");
+        Optional<Courses> courses = coursesRepository.findById(id);
+        /**
+         * @modelAndView.addObject -> gets the courses value from the DB table and display on the Front-end.
+         * @model.addAttribute("person", new Person()); ->  creates a new person object
+         * and sends data of newly created person data from front-end to back-end DB person Table.
+         */
+        modelAndView.addObject("courses", courses.get());
+        model.addAttribute("person", new Person());
+        session.setAttribute("courses", courses.get());
+        if(error != null){
+            errorMessage = "Invalid Email Entered !!!";
+            modelAndView.addObject("errorMessage", errorMessage);
+        }
+        return modelAndView;
+    }
+
+    @PostMapping("/addStudentToCourse")
+    public ModelAndView addStudentToCourse(Model model, @ModelAttribute("person") Person person, HttpSession session){
+        ModelAndView modelAndView = new ModelAndView();
+        Courses courses = (Courses) session.getAttribute("courses");
+        Person personEntity = personRepository.readByEmail(person.getEmail());
+
+        if(personEntity == null || !(personEntity.getPersonId() > 0)) {
+            modelAndView.setViewName("redirect:/admin/viewStudents?id=" + courses.getCourseId() + "&error=true");
+            return modelAndView;
+        }
+
+        personEntity.getCourses().add(courses);
+        courses.getPersons().add(personEntity);
+        personRepository.save(personEntity);
+        //updated courses in the session.
+        session.setAttribute("courses", courses);
+        modelAndView.setViewName("redirect:/admin/viewStudents?id=" + courses.getCourseId());
+        return modelAndView;
+    }
+
+    @GetMapping("/deleteStudentFromCourse")
+    public ModelAndView deleteStudentsFromCourses(Model model,  HttpSession session,
+                                                  @RequestParam(value = "personId") int personId){
+        //fetching existing courses data from the session.
+        Courses courses = (Courses) session.getAttribute("courses");
+        //findingById and storing inside person object
+        Optional<Person> person = personRepository.findById(personId);
+        /**
+         * Unlinking person table and courses table from manyToMany relational db.
+         * @removing -> courses from the person table
+         * @removing -> persons from the courses table.
+         * Unlink established.
+         */
+        person.get().getCourses().remove(courses);
+        courses.getPersons().remove(person);
+        // @save -> saving the updated person table in the DB.
+        personRepository.save(person.get());
+        //updating the session with updated value.
+        session.setAttribute("courses", courses);
+
+        //Viewing the updated page.
+        ModelAndView modelAndView = new
+                ModelAndView("redirect:/admin/deleteStudentFromCourse?id=" + courses.getCourseId());
+        return modelAndView;
+    }
+
 }
