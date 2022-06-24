@@ -197,13 +197,11 @@ public class AdminController {
         courses.getPersons().remove(person);
         // @save -> saving the updated person table in the DB.
         personRepository.save(person.get());
-        //updating the session with updated value.
+        //updating the session with updated value of courses object.
         session.setAttribute("courses", courses);
-
         //Viewing the updated page.
         ModelAndView modelAndView = new
-                ModelAndView("redirect:/admin/deleteStudentFromCourse?id=" + courses.getCourseId());
+                ModelAndView("redirect:/admin/viewStudents?id=" + courses.getCourseId());
         return modelAndView;
     }
-
 }
