@@ -3,6 +3,7 @@ package shadow.practice.portfolio.Controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -117,7 +118,10 @@ public class AdminController {
 
     @GetMapping("/displayCourses")
     public ModelAndView displayCoursesPage(Model model){
-        List<Courses> courses = coursesRepository.findAll();
+        //Static sorting.
+//        List<Courses> courses = coursesRepository.findByOrderByName();
+        // Dynamic Sorting using PagingAndSorting interface.
+        List<Courses> courses = coursesRepository.findAll(Sort.by("courseId").ascending());
         ModelAndView modelAndView = new ModelAndView("courses_secure.html");
         //fetch data from DB with the name courses and exploited this data in the front-end.
         modelAndView.addObject("courses", courses);

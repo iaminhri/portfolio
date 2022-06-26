@@ -6,6 +6,10 @@ package shadow.practice.portfolio.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 import shadow.practice.portfolio.Constants.PortfolioWebAppConstants;
@@ -66,20 +70,16 @@ public class ContactService {
         return isSaved;
     }
 
-    public List<Contact> findMsgsWithOpenStatus() {
-        // calling from Contact Repository.
-//        List<Contact> contactMsgs = contactRepository.findMsgsWithStatus(PortfolioWebAppConstants.OPEN);
-        /**
-         * @findByStatus -> Abstract method from Contact Repo, which is implemented at runtime by Spring Data JPA.
-         * Additionally, property status is mentioned within model class which connects to the database using SDJPA.
-         * Such that it knows which data to fetch from the table.
-         * @return a list<Contact>.
-         * @contactMsgs holds a reference of the status List of each msg inside DB.
-         */
-        List<Contact> contactMsgs = contactRepository.findByStatus(PortfolioWebAppConstants.OPEN);
+    public Page<Contact> findMsgsWithOpenStatus(int pageNum, String sortField, String sortDir) {
+        int pageSize = 5;
 
-        //Returning the queries from contact Repo.
-        return contactMsgs;
+        Pageable pageable = PageRequest.of(pageNum-1, pageSize,
+                sortDir.equals("asc") ? Sort.by(sortField).ascending() :
+                        Sort.by(sortField).descending()
+                );
+
+        Page<Contact> msgPage = contactRepository.findByStatus(PortfolioWebAppConstants.OPEN, pageable);
+        return msgPage;
     }
 
 //    public boolean updateMsgStatus(int contactId, String updatedBy) {
@@ -105,6 +105,23 @@ public class ContactService {
             isUpdated = true;
         return isUpdated;
     }
+
+//
+//    public List<Contact> findMsgsWithOpenStatus() {
+//        // calling from Contact Repository.
+////        List<Contact> contactMsgs = contactRepository.findMsgsWithStatus(PortfolioWebAppConstants.OPEN);
+//        /**
+//         * @findByStatus -> Abstract method from Contact Repo, which is implemented at runtime by Spring Data JPA.
+//         * Additionally, property status is mentioned within model class which connects to the database using SDJPA.
+//         * Such that it knows which data to fetch from the table.
+//         * @return a list<Contact>.
+//         * @contactMsgs holds a reference of the status List of each msg inside DB.
+//         */
+//        List<Contact> contactMsgs = contactRepository.findByStatus(PortfolioWebAppConstants.OPEN);
+//
+//        //Returning the queries from contact Repo.
+//        return contactMsgs;
+//    }
 
 //    public int getCounter() {
 //        return counter;
