@@ -9,11 +9,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Data
 /** @Entity -> builds the relationship between POJO class and repository */
 @Entity
 /** explicit mentions of the database name when database name and java class name don't match */
 @Table(name = "contact_msg")
-@Data
+@NamedQueries({
+        @NamedQuery(name = "Contact.findOpenMsgs",
+                    query = "SELECT c FROM Contact c WHERE c.status = :status"),
+        @NamedQuery(name = "Contact.updateMsgStatus",
+                    query = "UPDATE Contact c SET c.status = ?1 WHERE c.contactId = ?2")
+})
 public class Contact extends BaseEntity{
     /**
      * @contact_Id -> primary key column */

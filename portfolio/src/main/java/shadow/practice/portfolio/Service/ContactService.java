@@ -89,19 +89,23 @@ public class ContactService {
 //        if(result > 0)
 //            isUpdated = true;
 
-        Optional<Contact> contact = contactRepository.findById(contactId);
-        contact.ifPresent(contact1 -> {
-            /**
-             * This responsibility is handed over to Spring Data JPA dependency Check @AuditAwareImpl, @BaseEntity and @PortfolioWebApp
-             * */
-            contact1.setStatus(PortfolioWebAppConstants.CLOSE);
-//            contact1.setUpdatedAt(LocalDateTime.now());
-//            contact1.setUpdatedBy(updatedBy);
-        });
+//        Optional<Contact> contact = contactRepository.findById(contactId);
+//        contact.ifPresent(contact1 -> {
+//            /**
+//             * This responsibility is handed over to Spring Data JPA dependency Check @AuditAwareImpl, @BaseEntity and @PortfolioWebApp
+//             * */
+//            contact1.setStatus(PortfolioWebAppConstants.CLOSE);
+////            contact1.setUpdatedAt(LocalDateTime.now());
+////            contact1.setUpdatedBy(updatedBy);
+//        });
 
-        Contact updatedContact = contactRepository.save(contact.get());
+//        Contact updatedContact = contactRepository.save(contact.get());
+        int rows = contactRepository.updateStatusById(PortfolioWebAppConstants.CLOSE, contactId);
 
-        if(updatedContact != null && updatedContact.getUpdatedBy() != null)
+
+//        if(updatedContact != null && updatedContact.getUpdatedBy() != null)
+//            isUpdated = true;
+        if(rows > 0)
             isUpdated = true;
         return isUpdated;
     }
