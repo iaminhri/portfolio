@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
+import shadow.practice.portfolio.Config.PortfolioProps;
 import shadow.practice.portfolio.Constants.PortfolioWebAppConstants;
 import shadow.practice.portfolio.Model.Contact;
 import shadow.practice.portfolio.PortfolioWebApp;
@@ -44,6 +45,9 @@ public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
 
+    @Autowired
+    private PortfolioProps portfolioProps;
+
     public ContactService(){
         System.out.println("Contact service bean using request scope is created!!!");
     }
@@ -71,7 +75,11 @@ public class ContactService {
     }
 
     public Page<Contact> findMsgsWithOpenStatus(int pageNum, String sortField, String sortDir) {
-        int pageSize = 5;
+        int pageSize = portfolioProps.getPageSize();
+
+        if(portfolioProps.getContact() != null && portfolioProps.getContact().get("pageSize") != null){
+            pageSize = Integer.parseInt(portfolioProps.getContact().get("pageSize").trim());
+        }
 
         Pageable pageable = PageRequest.of(pageNum-1, pageSize,
                 sortDir.equals("asc") ? Sort.by(sortField).ascending() :
