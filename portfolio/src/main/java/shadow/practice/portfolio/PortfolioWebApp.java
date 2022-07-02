@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+//@EnableAdminServer
 @SpringBootApplication
 @EnableJpaRepositories("shadow.practice.portfolio.Repository")
 @EntityScan("shadow.practice.portfolio.Model")
